@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Face Recognition Based Attendance System</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;600&display=swap" rel="stylesheet">
+
+  <!-- Material Icons -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Rubik', sans-serif;
+    }
+
+    body {
+      background: url('https://d2xgqyuql1olth.cloudfront.net/assets/Uploads/2023-12/AI-Artificial-Intelligence-Human-gif-web.gif') no-repeat center center fixed;
+      background-size: cover;
+      height: 100vh;
+      color: #fff;
+      overflow-x: hidden;
+    }
+
+    .glass-container {
+      background: rgba(255, 255, 255, 0.15);
+      box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border-radius: 15px;
+      padding: 30px;
+      margin: 20px;
+    }
+
+    h1 {
+      text-shadow: 2px 2px 4px #000;
+      font-weight: bold;
+    }
+
+    .btn-glow {
+      font-weight: bold;
+      font-size: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(0, 123, 255, 0.8);
+    }
+
+    table {
+      background-color: rgba(255, 255, 255, 0.8);
+      color: #000;
+    }
+
+    th, td {
+      padding: 10px;
+      text-align: center;
+    }
+
+    th {
+      background-color: #007bff;
+      color: white;
+    }
+
+    tr:nth-child(even) {
+      background-color: #f2f2f2;
+    }
+
+    label, input {
+      color: #fff;
+    }
+
+    input {
+      background-color: rgba(255,255,255,0.2);
+      border: none;
+      border-radius: 8px;
+      padding: 10px;
+      width: 100%;
+      color: #fff;
+    }
+
+    input::placeholder {
+      color: #ddd;
+    }
+
+    @media screen and (max-width: 768px) {
+      .btn-glow {
+        width: 100% !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container-fluid text-center mt-4">
+    <h1>🌟 Face Recognition Based Attendance System 🌟</h1>
+    {% if mess %}
+      <p class="text-center text-danger fw-bold fs-4">{{ mess }}</p>
+    {% endif %}
+  </div>
+
+  <div class="container d-flex flex-wrap justify-content-center">
+    <!-- Today's Attendance -->
+    <div class="col-md-5 glass-container text-center">
+      <h2 class="bg-primary text-white p-2 rounded">📋 Today's Attendance</h2>
+      <a href="/start" style="text-decoration: none;">
+        <button class="btn btn-success btn-glow mt-3 mb-3 w-100">Take Attendance <i class="material-icons">beenhere</i></button>
+      </a>
+
+      <table class="table table-bordered table-hover">
+        <thead>
+          <tr>
+            <th>S No</th>
+            <th>Name</th>
+            <th>ID</th>
+            <th>Time</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% if l %}
+            {% for i in range(l) %}
+            <tr>
+              <td>{{ i+1 }}</td>
+              <td>{{ names[i] }}</td>
+              <td>{{ rolls[i] }}</td>
+              <td>{{ times[i] }}</td>
+            </tr>
+            {% endfor %}
+          {% else %}
+            <tr><td colspan="4">No records today</td></tr>
+          {% endif %}
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Add New User -->
+    <div class="col-md-5 glass-container text-center">
+      <form action='/add' method="POST" enctype="multipart/form-data">
+        <h2 class="bg-primary text-white p-2 rounded">➕ Add New User</h2>
+        <div class="form-group my-3">
+          <label><b>New User Name*</b></label>
+          <input type="text" name="newusername" required placeholder="e.g. Alice Smith">
+        </div>
+        <div class="form-group my-3">
+          <label><b>New User ID*</b></label>
+          <input type="number" name="newuserid" required placeholder="e.g. 1023">
+        </div>
+        <button type="submit" class="btn btn-dark w-100 mt-2">Add User</button>
+        <h5 class="text-light mt-4">👤 Total Users: {{ totalreg }}</h5>
+      </form>
+    </div>
+  </div>
+
+</body>
+</html>

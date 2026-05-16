@@ -1,0 +1,7 @@
+__pycache__/
+*.pyc
+*.pkl
+static/faces/
+Attendance/
+venv/
+.env
