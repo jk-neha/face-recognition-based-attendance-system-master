@@ -34,6 +34,8 @@ Do visit my blog for better explanations: https://machinelearningprojects.net/fa
 
 ![Face Recognition Based Attendance System](ss.png)
 http://127.0.0.1:5000
+
+
 📊 Results
 
 This section demonstrates the working output of the Face Recognition Attendance System.
@@ -41,18 +43,27 @@ This section demonstrates the working output of the Face Recognition Attendance 
 🖥️ 1. User Interface (Home Page)
 
 The system provides a simple web interface built using Flask where users can register and start attendance.
-<img width="1918" height="875" alt="ui_face_rec" src="https://github.com/user-attachments/assets/fbd2eb40-ff19-41b9-b8d5-251539a4d23c" />
 
+
+<img width="1918" height="875" alt="ui_face_rec" src="https://github.com/user-attachments/assets/8b827287-1c10-4671-864c-59d012401657" />
 
 👤 2. User Registration
 
 A new user is added by capturing multiple face images through the webcam. These images are stored in the dataset for training the model.
 
-<img width="1915" height="871" alt="attendance_marked png" src="https://github.com/user-attachments/assets/76307db8-ba6b-4893-8ff5-0595bc723f1c" />
+
+
+Uploading user_registration.mp4…
+
+
 
 📸 3. Live Attendance Marking
 
 Once the face is recognized in real-time, the system automatically marks attendance with timestamp.
+
+
+<img width="1915" height="871" alt="attendance_marked png" src="https://github.com/user-attachments/assets/748eea6b-2182-4d9a-80c1-13b2b633e081" />
+
 
 📊 4. Attendance Output
 
@@ -63,6 +74,14 @@ Example format:
 Name	Roll	Time
 Neha	101	10:45:12
 NEHA VARDHINI J K	12	14:34:44
-<img width="311" height="25" alt="image" src="https://github.com/user-attachments/assets/da8b15b5-3bc4-42f4-a14e-2b49cd3bada1" />
+[Attendance-05_16_26.csv](https://github.com/user-attachments/files/27852336/Attendance-05_16_26.csv)
+Name,Roll,Time
+
+agnes,120,13:34:45
+Maha,1982,13:34:50
+krishna,1978,13:34:51
+
+NEHA VARDHINI J K,12,14:34:44
+
 
 
