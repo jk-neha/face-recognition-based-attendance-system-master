@@ -5,7 +5,7 @@
 # Face Recognition Attendance System
 
 **Automated, real-time attendance tracking powered by computer vision**
-
+https://cdn.dribbble.com/userupload/23906619/file/original-ee46f7319ba3223ef1cc7045bfcbf7c9.gif
 [![Python](https://img.shields.io/badge/Python-3.7%2B-blue?style=flat-square&logo=python&logoColor=white)](https://python.org)
 [![Flask](https://img.shields.io/badge/Flask-2.x-black?style=flat-square&logo=flask)](https://flask.palletsprojects.com)
 [![OpenCV](https://img.shields.io/badge/OpenCV-4.x-green?style=flat-square&logo=opencv)](https://opencv.org)
