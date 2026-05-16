@@ -1,87 +1,205 @@
-# Face Recognition Based Attendance System
+# 🎓 Face Recognition Based Attendance System
+
+<div align="center">
+
+![Python](https://img.shields.io/badge/Python-3.7%2B-blue?style=for-the-badge&logo=python&logoColor=white)
+![OpenCV](https://img.shields.io/badge/OpenCV-4.x-green?style=for-the-badge&logo=opencv&logoColor=white)
+![License](https://img.shields.io/badge/License-MIT-yellow?style=for-the-badge)
+![Status](https://img.shields.io/badge/Status-Active-brightgreen?style=for-the-badge)
+
+**An intelligent, automated attendance management system powered by real-time face recognition.**
+
+[Features](#-features) • [Demo](#-demo) • [Installation](#-installation) • [Usage](#-usage) • [Project Structure](#-project-structure) • [Contributing](#-contributing)
+
+</div>
+
+---
 
 ## 📌 Overview
-This project is an AI-based attendance system that uses face recognition to automatically mark attendance using a webcam.
 
-## 🚀 Features
-- Real-time face detection using OpenCV
-- Face recognition using trained model
-- Automatic attendance marking in CSV
-- Web interface using Flask + HTML
-- Live webcam integration
+The **Face Recognition Based Attendance System** automates the process of marking student or employee attendance using live facial recognition. By replacing manual roll-calls and ID-card swipes, it reduces human error, prevents proxy attendance, and logs records instantly into a structured CSV file.
+
+Built with Python, OpenCV, and the `face_recognition` library, this system can recognize multiple faces in real time via a webcam feed.
+
+---
+
+## ✨ Features
+
+- 🔍 **Real-Time Face Detection** — Detects and recognizes faces live via webcam
+- 📋 **Automated Attendance Logging** — Marks attendance with timestamp into a CSV file
+- 👤 **Multi-Face Support** — Recognizes multiple registered individuals simultaneously
+- 🧠 **Face Encoding Storage** — Encodes and stores face data for fast, accurate matching
+- 📁 **CSV Report Generation** — Generates date-wise attendance sheets automatically
+- 🚫 **Proxy Prevention** — Physical presence required; no manual overrides
+- 🖥️ **Simple GUI Interface** — Easy-to-use interface for registration and attendance marking
+
+---
 
 ## 🛠️ Tech Stack
-- Python
-- OpenCV
-- Flask
-- HTML/CSS
-- Haar Cascade Classifier
 
-## 📂 Project Structure
-- app.py → main backend
-- static/ → trained model + face images
-- templates/ → frontend UI
-- Attendance/ → attendance records
+| Component | Technology |
+|-----------|------------|
+| Language | Python 3.7+ |
+| Face Recognition | `face_recognition` (dlib-based) |
+| Computer Vision | OpenCV (`cv2`) |
+| Data Storage | CSV files |
+| GUI | Tkinter |
+| Numerical Computing | NumPy |
 
-## ▶️ How to Run
+---
+
+## 📁 Project Structure
+
+```
+face-recognition-attendance-system/
+│
+├── TrainingImage/              # Stores captured face images for training
+├── TrainingImageLabel/         # Encoded face data (trainer.yml)
+├── StudentDetails/             # CSV file with registered student records
+├── Attendance/                 # Date-wise attendance CSV files
+│
+├── haarcascade_frontalface_default.xml   # Haar Cascade for face detection
+│
+├── AtalRecognition.py          # Core face recognition logic
+├── training.py                 # Model training script
+├── automaticAttedance.py       # Automated attendance marking
+├── app.py                      # Main application / GUI entry point
+│
+└── README.md
+```
+
+---
+
+## ⚙️ Installation
+
+### Prerequisites
+
+Ensure you have the following installed:
+
+- Python 3.7 or higher
+- pip (Python package manager)
+- A working webcam
+
+### Step 1 — Clone the Repository
+
+```bash
+git clone https://github.com/jk-neha/face-recognition-based-attendance-system-master.git
+cd face-recognition-based-attendance-system-master
+```
+
+### Step 2 — Install Dependencies
+
 ```bash
 pip install -r requirements.txt
+```
+
+> **Note:** `dlib` and `face_recognition` may require additional system packages. On Ubuntu/Debian:
+> ```bash
+> sudo apt-get install build-essential cmake libopenblas-dev liblapack-dev
+> ```
+> On Windows, consider using pre-built wheels from [this guide](https://github.com/ageitgey/face_recognition/blob/master/README.md#installation).
+
+### Step 3 — Run the Application
+
+```bash
 python app.py
+```
 
-# face-recognition-based-attendance-system  
+---
 
-Do visit my blog for better explanations: https://machinelearningprojects.net/face-recognition-based-attendance-system/
+## 🚀 Usage
 
-![Face Recognition Based Attendance System](ss.png)
-http://127.0.0.1:5000
+### 1. Register a New Student/Employee
 
+1. Launch the application via `python app.py`
+2. Enter the **ID** and **Name** of the individual
+3. Click **"Take Images"** — the system captures 50–100 face samples via webcam
+4. Click **"Train Model"** to generate the facial encoding
 
-📊 Results
+### 2. Mark Attendance
 
-This section demonstrates the working output of the Face Recognition Attendance System.
+1. Click **"Automatic Attendance"**
+2. The webcam activates and scans for registered faces in real time
+3. Recognized individuals are automatically marked **Present** with a timestamp
+4. Attendance is saved to `Attendance/<date>.csv`
 
-🖥️ 1. User Interface (Home Page)
+### 3. View Attendance Records
 
-The system provides a simple web interface built using Flask where users can register and start attendance.
+- Open the generated `.csv` files inside the `Attendance/` folder
+- Each file is named by date (e.g., `Attendance_16-05-2026.csv`) and contains:
 
+| ID | Name | Date | Time |
+|----|------|------|------|
+| 101 | Neha Sharma | 16-05-2026 | 09:03:21 |
 
-<img width="1918" height="875" alt="ui_face_rec" src="https://github.com/user-attachments/assets/8b827287-1c10-4671-864c-59d012401657" />
+---
 
-👤 2. User Registration
+## 📸 Demo
 
-A new user is added by capturing multiple face images through the webcam. These images are stored in the dataset for training the model.
+> _Add a screenshot or GIF of your running application here._
 
+```
+[ Screenshot Placeholder ]
+```
 
+To add a demo image:
+```markdown
+![Demo](assets/demo.gif)
+```
 
-Uploading user_registration.mp4…
+---
 
+## 🔧 Configuration
 
+You can adjust the following parameters in the source files:
 
-📸 3. Live Attendance Marking
+| Parameter | File | Default | Description |
+|-----------|------|---------|-------------|
+| Sample images count | `app.py` | `50` | Number of images captured per person |
+| Recognition tolerance | `AtalRecognition.py` | `0.6` | Lower = stricter matching |
+| Camera index | `app.py` | `0` | Change if using an external webcam |
 
-Once the face is recognized in real-time, the system automatically marks attendance with timestamp.
+---
 
+## 🐛 Known Issues & Limitations
 
-<img width="1915" height="871" alt="attendance_marked png" src="https://github.com/user-attachments/assets/748eea6b-2182-4d9a-80c1-13b2b633e081" />
+- Performance may degrade in low-light environments
+- Accuracy can be affected by significant changes in appearance (e.g., masks, glasses)
+- Currently supports local storage only (no database integration)
+- Designed for single-camera setups
 
+---
 
-📊 4. Attendance Output
+## 🤝 Contributing
 
-Attendance is stored in a CSV file which can be exported and viewed easily.
+Contributions are welcome! Here's how to get started:
 
-Example format:
+1. **Fork** the repository
+2. **Create** a feature branch: `git checkout -b feature/your-feature-name`
+3. **Commit** your changes: `git commit -m 'Add: your feature description'`
+4. **Push** to the branch: `git push origin feature/your-feature-name`
+5. **Open** a Pull Request
 
-Name	Roll	Time
-Neha	101	10:45:12
-NEHA VARDHINI J K	12	14:34:44
-[Attendance-05_16_26.csv](https://github.com/user-attachments/files/27852336/Attendance-05_16_26.csv)
-Name,Roll,Time
+Please ensure your code follows PEP 8 style guidelines and includes relevant comments.
 
-agnes,120,13:34:45
-Maha,1982,13:34:50
-krishna,1978,13:34:51
+---
 
-NEHA VARDHINI J K,12,14:34:44
+## 📄 License
 
+This project is licensed under the **MIT License** — see the [LICENSE](LICENSE) file for details.
 
+---
 
+## 🙏 Acknowledgements
+
+- [ageitgey/face_recognition](https://github.com/ageitgey/face_recognition) — for the face recognition library
+- [OpenCV](https://opencv.org/) — for real-time computer vision capabilities
+- [dlib](http://dlib.net/) — for the underlying facial landmark detection
+
+---
+
+<div align="center">
+
+Made with ❤️ | If you found this useful, please ⭐ star the repository!
+
+</div>
