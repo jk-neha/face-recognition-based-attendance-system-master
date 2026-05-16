@@ -144,7 +144,7 @@ python app.py
 
 To add a demo image:
 ```markdown
-![Demo](assets/demo.gif)
+![Demo](results\ui_face_rec.png)
 ```
 
 ---
