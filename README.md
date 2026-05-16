@@ -46,7 +46,7 @@ A web-based attendance management system that uses **live face recognition** to 
 
 | Dashboard | Registered Users |
 |---|---|
-| ![Dashboard](results/ui_face_rec.png) | ![Users](results/registered_users.png) |
+| ![Dashboard](results/ui_face_rec.png) |
 
 > **Live Recognition** — when attendance is started, a webcam window opens, draws a bounding box around each detected face, labels it with the recognised name, and logs the entry automatically.
 
