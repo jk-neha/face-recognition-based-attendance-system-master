@@ -1,8 +1,9 @@
 <div align="center">
 
-<img src="Face ID glitch effect.gif" width="120" alt="Face ID">
 
 # Face Recognition Attendance System
+
+<img width="1402" height="1122" alt="ChatGPT Image May 16, 2026, 05_45_19 PM" src="https://github.com/user-attachments/assets/43909f1b-047f-4044-9932-2d2e27fee748" />
 
 **Automated, real-time attendance tracking powered by computer vision**
 
